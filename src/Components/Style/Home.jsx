@@ -12,12 +12,12 @@ const Home = () => {
           Good study habits include finding a quiet location to study, taking breaks, settings goals, and taking practice tests. Here's the full list, and the psychological reasons why they work.Studying can be hard. The good news is that anybody can develop good study habits to make studying more effective, efficient, and enjoyable.
           </p>
           <div className='flex flex-wrap justify-center'>
-            <button
+            {/* <button
               type='button'
               className='px-8 py-3 m-2 text-lg font-semibold rounded bg-gray-800 hover:bg-gray-700 text-gray-50'
             >
               Visit Profile
-            </button>
+            </button> */}
 
             <button
               type='button'
