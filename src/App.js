@@ -1,7 +1,11 @@
 
-import './App.css';
 import { RouterProvider } from 'react-router-dom';
-import { routes } from './Routes/Routes';
+import './App.css';
+import { routes } from './Components/Style/Route';
+// import { Route, RouterProvider } from 'react-router-dom';
+
+
+
 
 function App() {
   return (
@@ -9,6 +13,7 @@ function App() {
          <RouterProvider router={routes}>
 
          </RouterProvider>
+      
     </div>
   );
 }
