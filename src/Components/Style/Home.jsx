@@ -26,12 +26,12 @@ const Home = () => {
               Login
             </button>
 
-            <button
+            {/* <button
               type='button'
               className='px-8 py-3 m-2 text-lg border rounded border-gray-700 text-gray-900'
             >
               Register
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

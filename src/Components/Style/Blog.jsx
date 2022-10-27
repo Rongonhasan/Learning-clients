@@ -3,6 +3,7 @@ import React from "react";
 const Blog = () => {
   return (
     <div>
+      <h1 className="text-2xl mb-4 "> Question Section</h1>
       <div
         tabIndex={0}
         className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
