@@ -22,7 +22,7 @@ const Blog = () => {
         </div>
       </div>
 
-      {/* <div
+      <div
         tabIndex={0}
         className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
       >
@@ -43,7 +43,7 @@ const Blog = () => {
             authentication server.
           </p>
         </div>
-      </div> */}
+      </div>
 
       <div
         tabIndex={0}
