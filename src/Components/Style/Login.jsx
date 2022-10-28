@@ -1,48 +1,54 @@
+import { GoogleAuthProvider } from 'firebase/auth'
 import { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../contexts/UserContext'
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState('')
-  // const [showPass, setShowPass] = useState(false)
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  const [error, setError] = useState('');
+  const { signIn, setLoading, googleLogin } = useContext(AuthContext);
+  const gProvider = new GoogleAuthProvider();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const { signin, resetPassword, signInWithGoogle } = useContext(AuthContext)
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = event => {
-    event.preventDefault()
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
 
-    const email = event.target.email.value
-    const password = event.target.password.value
-
-    signin(email, password)
-      .then(result => {
-        toast.success('Login Success!')
-        navigate(from, { replace: true })
-        console.log(result.user)
-      })
-      .catch(error => toast.error(error.message))
+      signIn(email, password)
+          .then(result => {
+              const user = result.user;
+              console.log(user);
+              form.reset();
+              setError('');
+              if(user.emailVerified){
+                  navigate(from, {replace: true});
+              }
+              else{
+                  toast.error('Your email is not verified. Please verify your email address.')
+              }
+          })
+          .catch(error => {
+              console.error(error)
+              setError(error.message);
+          })
+          .finally(() => {
+              setLoading(false);
+          })
   }
-
-  // Google Signin
-  const handleGoogleSignin = () => {
-    signInWithGoogle().then(result => {
-      console.log(result.user)
-      navigate(from, { replace: true })
-    })
-  }
-
-  //Reset Pass
-  const handleReset = () => {
-    resetPassword(userEmail)
-      .then(() => {
-        toast.success('Reset link has been sent, please check email')
-      })
-      .catch(error => toast.error(error.message))
-  }
+  const handleGoogleSignin=()=>{
+    googleLogin( gProvider)
+    .then(result => {
+     const user = result.user;
+     console.log(user);
+     navigate(from,{replace: true})
+   })
+   .catch(error => setError(error.message))
+   }
 
   return (
     <div className='flex justify-center items-center pt-8'>
@@ -65,7 +71,7 @@ const Login = () => {
                 Email address
               </label>
               <input
-                onBlur={event => setUserEmail(event.target.value)}
+           
                 type='email'
                 name='email'
                 id='email'
@@ -106,7 +112,7 @@ const Login = () => {
         </form>
         <div className='space-y-1'>
           <button
-            onClick={handleReset}
+            
             className='text-xs hover:underline text-gray-400'
           >
             Forgot password?

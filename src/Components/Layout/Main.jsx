@@ -1,6 +1,7 @@
 import React from 'react';
-import { Footer } from 'react-daisyui';
 import { Outlet } from 'react-router-dom';
+import Footer from '../Style/Footer';
+
 import Header from '../Style/Header'
 
 const Main = () => {
@@ -8,7 +9,7 @@ const Main = () => {
         <div>
            <Header></Header>
            <Outlet></Outlet>
-           <Footer></Footer>
+            <Footer/>
         </div>
     );
 };
