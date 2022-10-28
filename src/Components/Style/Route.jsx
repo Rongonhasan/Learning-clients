@@ -24,7 +24,7 @@ export const routes = createBrowserRouter([
             path: '/courses',
             element:  
             <Courses></Courses>,
-            loader:()=>fetch('http://localhost:5000/courses')
+            loader:()=>fetch('https://learning-server-tau.vercel.app/courses')
         
           },
           {
@@ -38,7 +38,7 @@ export const routes = createBrowserRouter([
           {
             path: '/courses/:id',
             element: <CourseDetails></CourseDetails>,
-            loader:({params})=>fetch(`http://localhost:5000/courses/${params.id}`)
+            loader:({params})=>fetch(`https://learning-server-tau.vercel.app/courses/${params.id}`)
           },
           {
             path: '/registar',

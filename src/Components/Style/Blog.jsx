@@ -30,7 +30,7 @@ const Blog = () => {
           Why are you using firebase? What other options do you have to
           implement authentication?
         </div>
-        <div className="collapse-content">
+        {/* <div className="collapse-content">
           <p>
             Use Google Analytics for Firebase to log events at every step of
             your onboarding flow, create funnels to see where users are dropping
@@ -42,7 +42,7 @@ const Blog = () => {
             credentials in a database of authorized users or in a data
             authentication server.
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div
